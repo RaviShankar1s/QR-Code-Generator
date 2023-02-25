@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="qr.css">
+    <link rel="icon" href="Logo.png">
+    <title>RaHi QR CODE GENERATOR</title>
+</head>
+<body>
+    <div class="container">
+        
+        <div id="logo">
+            <img src="Logo.png" alt="logo"> 
+        <!-- <h1><b>QR Code Generator</b></h1>
+        <h2>Mr. Ravi Shankar</h2> -->
+    </div>
+
+        <p>Enter Your Text or URL</p>
+        <input type="text" placeholder="Text or URL" id="qrtext">
+
+        <div id="imgbox">
+            <img src="" id="qrimage">
+        </div>
+
+        <button onclick="generateQR()">Generate QR Code</button>
+        
+
+    </div>
+    <script>
+
+        let imgbox = document.getElementById("imgbox");
+        let qrimage = document.getElementById("qrimage");
+        let qrtext = document.getElementById("qrtext");
+        function generateQR(){
+            if(qrtext.value.length > 0){
+            qrimage.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" 
+            + qrtext.value;
+            imgbox.classList.add("show-img");
+        }
+        else{
+            qrtext.classList.add('error')
+            setTimeout(()=>{
+                qrtext.classList.remove('error')
+            },1000);
+        }
+    }
+        
+    </script>
+</body>
+</html>
